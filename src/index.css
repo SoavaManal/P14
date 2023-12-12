@@ -1,0 +1,90 @@
+.title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 10px;
+}
+
+.address {
+  margin-top: 10px;
+}
+.main{
+  position: relative;
+}
+.div_modal{
+  background-color: rgba(0,0,0,0.5);
+  margin: 0;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left:0;
+  right:0;
+}
+.modal{
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40%;
+  margin-bottom: auto;
+  padding: 15px;
+  border-radius: 5px;
+  width: 50%;
+  background-color: white;
+  position: relative;
+}
+.closeModal{
+  color: white;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  height: 15px;
+  margin: auto;
+  border-radius: 50%;
+  padding: 7px;
+  cursor: pointer;
+  position: absolute;
+  top:-5px;
+  right: -5px;
+}
+table {
+  border-collapse: collapse;
+  width: 90%;
+}
+ tr{
+  border: 1px solid #c1c1c1;
+ }
+
+ td {
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  background-color: #f2f2f2;
+}
+
+th {
+  
+  padding: 5px;
+}
+.footer{
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  
+}
+.footer a{
+  margin: 50px;
+}
