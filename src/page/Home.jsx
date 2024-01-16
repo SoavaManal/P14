@@ -5,30 +5,32 @@ import "../index.css";
 import Modal from "../composant/Modal.jsx";
 import { useDispatch, useSelector } from "react-redux";
 import { setEmployee } from "../reducers/employee.reducer.js";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 export default function Home() {
   // état pour gérer les champs du formulaire
   const [firstName, SetFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [birth, setBirth] = useState("");
-  const [start, setStart] = useState("");
+  const [birth, setBirth] = useState(null);
+  const [start, setStart] = useState(null);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [code, setCode] = useState("");
-  const [department, setDepartment] = useState("");
-  
+  const [department, setDepartment] = useState("Sales");
+
   // état pour gérer l'ouverture de la modale
   const [openModal, setOpenModal] = useState(false);
-  
+
   const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
     const employee = {
       firstName,
       lastName,
-      birth,
-      start,
+      birth:birth.toISOString(),
+      start:start.toISOString(),
       street,
       city,
       state,
@@ -65,17 +67,24 @@ export default function Home() {
           />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
-          <input
+          <DatePicker
             id="date-of-birth"
-            type="date"
-            onChange={(e) => setBirth(e.target.value)}
+            selected={birth}
+            onChange={(date) => setBirth(date)}
+            dateFormat="dd/MM/yyyy" // Format de la date
+            // maxDate={new Date()}
+            showYearDropdown
+            scrollableYearDropdown
           />
 
           <label htmlFor="start-date">Start Date</label>
-          <input
+          <DatePicker
             id="start-date"
-            type="date"
-            onChange={(e) => setStart(e.target.value)}
+            selected={start}
+            onChange={(date) => setStart(date)}
+            dateFormat="dd/MM/yyyy" // Format de la date
+            showYearDropdown // Activer le sélecteur d'année déroulant
+            scrollableYearDropdown // Permettre de faire défiler les années
           />
 
           <fieldset className="address">
@@ -99,6 +108,7 @@ export default function Home() {
             <select
               name="state"
               id="state"
+              className="select"
               onChange={(e) => setState(e.target.value)}
             >
               {states.map((state) => (
@@ -115,20 +125,26 @@ export default function Home() {
               onChange={(e) => setCode(e.target.value)}
             />
           </fieldset>
-
-          <label
-            htmlFor="department"
-            onChange={(e) => setDepartment(e.target.value)}
-          >
-            Department
-          </label>
-          <select name="department" id="department" onChange={e=> setDepartment(e.target.value)}>
-            <option value="Sales">Sales</option>
-            <option value="Marketing">Marketing</option>
-            <option value="Engineering">Engineering</option>
-            <option value="human Ressources">Human Resources</option>
-            <option>Legal</option>
-          </select>
+          <div className="department">
+            <label
+              htmlFor="department"
+              onChange={(e) => setDepartment(e.target.value)}
+            >
+              Department
+            </label>
+            <select
+              name="department"
+              className="select"
+              id="department"
+              onChange={(e) => setDepartment(e.target.value)}
+            >
+              <option value="Sales">Sales</option>
+              <option value="Marketing">Marketing</option>
+              <option value="Engineering">Engineering</option>
+              <option value="human Ressources">Human Resources</option>
+              <option value="Legal">Legal</option>
+            </select>
+          </div>
           <button type="submit">Save</button>
         </form>
       </div>
