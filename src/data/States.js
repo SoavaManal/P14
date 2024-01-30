@@ -1,3 +1,4 @@
+// hardcoded data
 const states = [
   {
     name: "Alabama",

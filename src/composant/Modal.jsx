@@ -1,8 +1,10 @@
-export default function Modal({ handleCloseModale }) {
+
+// Component Modal display
+export default function Modal({ mesage , handleCloseModale }) {
   return (
     <div className="div_modal">
       <div id="confirmation" className="modal">
-        Employee Created!
+        {mesage}
         <span className="closeModal" onClick={handleCloseModale}>
           x
         </span>

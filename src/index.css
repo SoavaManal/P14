@@ -24,7 +24,7 @@ label {
 .main {
   position: relative;
 }
-.div_modal {
+/* .div_modal {
   background-color: rgba(0, 0, 0, 0.5);
   margin: 0;
   position: absolute;
@@ -59,7 +59,7 @@ label {
   position: absolute;
   top: -5px;
   right: -5px;
-}
+} */
 table {
   border-collapse: collapse;
   width: 100%;

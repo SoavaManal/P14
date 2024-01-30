@@ -2,11 +2,12 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import states from "../data/States.js";
 import "../index.css";
-import Modal from "../composant/Modal.jsx";
-import { useDispatch, useSelector } from "react-redux";
+// import Modal from "../composant/Modal.jsx";
+import { useDispatch } from "react-redux";
 import { setEmployee } from "../reducers/employee.reducer.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Dialog from "dialog";
 
 export default function Home() {
   // état pour gérer les champs du formulaire
@@ -16,7 +17,7 @@ export default function Home() {
   const [start, setStart] = useState(null);
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [state, setState] = useState("Alabama");
   const [code, setCode] = useState("");
   const [department, setDepartment] = useState("Sales");
 
@@ -40,9 +41,10 @@ export default function Home() {
     dispatch(setEmployee(employee));
     setOpenModal(true);
   };
-  const handleCloseModale = () => {
-    setOpenModal(false);
-  };
+  const handleCloseModale=()=>{
+    setOpenModal(false)
+  }
+  
   return (
     <div className="main">
       <div className="title">
@@ -57,6 +59,7 @@ export default function Home() {
             type="text"
             id="first-name"
             onChange={(e) => SetFirstName(e.target.value)}
+            required
           />
 
           <label htmlFor="last-name">Last Name</label>
@@ -64,6 +67,7 @@ export default function Home() {
             type="text"
             id="last-name"
             onChange={(e) => setLastName(e.target.value)}
+            required
           />
 
           <label htmlFor="date-of-birth">Date of Birth</label>
@@ -95,6 +99,7 @@ export default function Home() {
               id="street"
               type="text"
               onChange={(e) => setStreet(e.target.value)}
+              required
             />
 
             <label htmlFor="city">City</label>
@@ -102,6 +107,7 @@ export default function Home() {
               id="city"
               type="text"
               onChange={(e) => setCity(e.target.value)}
+              required
             />
 
             <label htmlFor="state">State</label>
@@ -123,6 +129,7 @@ export default function Home() {
               id="zip-code"
               type="number"
               onChange={(e) => setCode(e.target.value)}
+              required
             />
           </fieldset>
           <div className="department">
@@ -148,7 +155,7 @@ export default function Home() {
           <button type="submit">Save</button>
         </form>
       </div>
-      {openModal ? <Modal handleCloseModale={handleCloseModale} /> : ""}
+      {openModal ? <Dialog mesage="Employee Created!" handleCloseModale={handleCloseModale}/> : ""}
     </div>
   );
 }
