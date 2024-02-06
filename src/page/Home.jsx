@@ -7,7 +7,8 @@ import { useDispatch } from "react-redux";
 import { setEmployee } from "../reducers/employee.reducer.js";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import Dialog from "dialog";
+import Dialog from "oc_ms_dialog";
+import "oc_ms_dialog/dist/lib.css";
 
 export default function Home() {
   // état pour gérer les champs du formulaire
@@ -30,8 +31,8 @@ export default function Home() {
     const employee = {
       firstName,
       lastName,
-      birth:birth.toISOString(),
-      start:start.toISOString(),
+      birth: birth.toISOString(),
+      start: start.toISOString(),
       street,
       city,
       state,
@@ -41,10 +42,10 @@ export default function Home() {
     dispatch(setEmployee(employee));
     setOpenModal(true);
   };
-  const handleCloseModale=()=>{
-    setOpenModal(false)
-  }
-  
+  const handleCloseModale = () => {
+    setOpenModal(false);
+  };
+
   return (
     <div className="main">
       <div className="title">
@@ -155,7 +156,14 @@ export default function Home() {
           <button type="submit">Save</button>
         </form>
       </div>
-      {openModal ? <Dialog mesage="Employee Created!" handleCloseModale={handleCloseModale}/> : ""}
+      {openModal ? (
+        <Dialog
+          mesage="Employee Created!"
+          handleCloseModale={handleCloseModale}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 }
