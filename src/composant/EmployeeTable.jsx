@@ -2,154 +2,158 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretUp, faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 // Component table display
-export default function EmployeeTable({
-  employees,
-  handleAsc,
-  handleDesc})
- {
+export default function EmployeeTable({ employees, handleSortElement }) {
   return (
     <table className="display">
       <thead>
         <tr>
-          <th>
+          <th id="firstName">
             <span>First Name</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("firstName", "string")}
+                onClick={() => handleSortElement("firstName", "string","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("firstName", "string")}
+                onClick={() => handleSortElement("firstName", "string","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="lastName">
             <span>Last Name</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("lastName", "string")}
+                onClick={() => handleSortElement("lastName", "string","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("lastName", "string")}
+                onClick={() => handleSortElement("lastName", "string","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="start">
             <span>Start Date</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("start", "date")}
+                onClick={() => handleSortElement("start", "date","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("start", "date")}
+                onClick={() => handleSortElement("start", "date","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="department">
             <span>Departement</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("department", "string")}
+                onClick={() => handleSortElement("department", "string","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("department", "string")}
+                onClick={() => handleSortElement("department", "string","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="birth">
             <span>Date of Birth</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("birth", "date")}
+                onClick={() => handleSortElement("birth", "date","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("birth", "date")}
+                onClick={() => handleSortElement("birth", "date","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="street">
             <span>Street</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("street", "string")}
+                onClick={() => handleSortElement("street", "string","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("street", "string")}
+                onClick={() => handleSortElement("street", "string","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="city">
             <span>City</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("city", "string")}
+                onClick={() => handleSortElement("city", "string","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("city", "string")}
+                onClick={() => handleSortElement("city", "string","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="state">
             <span>State</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("state", "string")}
+                onClick={() => handleSortElement("state", "string","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("state", "string")}
+                onClick={() => handleSortElement("state", "string","desc")}
               />
             </span>
           </th>
-          <th>
+          <th id="code">
             <span>Zip Code</span>
             <span className="icons">
               <FontAwesomeIcon
                 icon={faCaretUp}
-                onClick={() => handleAsc("code", "number")}
+                onClick={() => handleSortElement("code", "number","asc")}
               />
               <FontAwesomeIcon
                 icon={faCaretDown}
-                onClick={() => handleDesc("code", "number")}
+                onClick={() => handleSortElement("code", "number","desc")}
               />
             </span>
           </th>
         </tr>
       </thead>
 
-      {employees.length == 0 ? (
-        <tbody className="noData">No data available in table</tbody>
-      ) : (
-        employees.map((employee, index) => (
-          <tbody>
+      <tbody>
+        {employees.length == 0 ? (
+          <tr className="noData">
+            <td colSpan="9" style={{ textAlign: "center" }}>
+              No data available in table
+            </td>
+          </tr>
+        ) : (
+          employees.map((employee, index) => (
             <tr key={index}>
-              <td>{employee.firstName}</td>
-              <td>{employee.lastName}</td>
-              <td>{new Date(employee.start).toLocaleDateString("fr-FR")}</td>
-              <td>{employee.department}</td>
-              <td>{new Date(employee.birth).toLocaleDateString("fr-FR")}</td>
-              <td>{employee.street}</td>
-              <td>{employee.city}</td>
-              <td>{employee.state}</td>
-              <td>{employee.code}</td>
+              <td headers="firstName">{employee.firstName}</td>
+              <td headers="lastName">{employee.lastName}</td>
+              <td headers="start">
+                {new Date(employee.start).toLocaleDateString("fr-FR")}
+              </td>
+              <td headers="department">{employee.department}</td>
+              <td headers="birth">
+                {new Date(employee.birth).toLocaleDateString("fr-FR")}
+              </td>
+              <td headers="steet">{employee.street}</td>
+              <td headers="city">{employee.city}</td>
+              <td headers="state">{employee.state}</td>
+              <td headers="code">{employee.code}</td>
             </tr>
-          </tbody>
-        ))
-      )}
+          ))
+        )}
+      </tbody>
     </table>
   );
 }

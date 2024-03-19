@@ -1,5 +1,5 @@
 // hardcoded data
-const employeesTest = [
+const employeesMock = [
   {
     firstName: "Manal",
     lastName: "Jaber",
@@ -57,4 +57,4 @@ const employeesTest = [
   },
 ];
 
-export default employeesTest;
+export default employeesMock;

@@ -9,12 +9,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin: 0px 20px 0px 20px;
 }
 
 label {
   display: block;
   margin-top: 1rem;
   margin-bottom: 10px;
+  padding-right:10px ;
 }
 
 .address {
@@ -24,44 +26,9 @@ label {
 .main {
   position: relative;
 }
-/* .div_modal {
-  background-color: rgba(0, 0, 0, 0.5);
-  margin: 0;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-}
-.modal {
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40%;
-  margin-bottom: auto;
-  padding: 15px;
-  border-radius: 5px;
-  width: 50%;
-  background-color: white;
-  position: relative;
-}
-.closeModal {
-  color: white;
-  background-color: black;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 15px;
-  height: 15px;
-  margin: auto;
-  border-radius: 50%;
-  padding: 7px;
-  cursor: pointer;
-  position: absolute;
-  top: -5px;
-  right: -5px;
-} */
 table {
-  border-collapse: collapse;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
 }
 tr {
@@ -72,11 +39,10 @@ td {
   padding: 10px;
   margin: 5px;
   text-align: center;
-  background-color: #f2f2f2;
 }
 
 th {
-  padding: 5px;
+  padding: 5px 5px 15px 5px;
   width: 11.1%;
 }
 th span:nth-child(1){
@@ -86,19 +52,19 @@ th span:nth-child(1){
   display: flex;
   justify-content: space-between;
   width: 90%;
+  position: fixed;
+  bottom: 30px;
 }
 .footer a {
-  margin: 50px;
+  margin: 20px 0px 0px 0px;
 }
 .flex {
   display: flex;
   align-items: center;
 }
-.color-light {
-  color: #666;
-}
-.color-dark {
-  color: #333;
+p{
+  margin: 0;
+  padding: 0px 10px 0px 10px;
 }
 .pagination {
   padding: 8px;
@@ -113,7 +79,7 @@ th span:nth-child(1){
     color-stop(0%, #fff),
     color-stop(100%, #dcdcdc)
   );
-  margin: 15px;
+  margin: 0px 20px 0px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,8 +90,8 @@ th span:nth-child(1){
   
 }
 .icons svg{
-  width: 15px; /* Ajustez la largeur selon vos besoins */
-  height: 15px; /* Ajustez la hauteur selon vos besoins */
+  width: 15px;
+  height: 15px; 
 }
 .icons svg:nth-child(1) {
   /* color: red; */
@@ -164,8 +130,31 @@ th span:nth-child(1){
 }
 .noData{
   text-align: center;
-  /* width: 500%; */
   margin-left: 0;
   margin-right: 0;
   font-weight: bolder;
+}
+tbody{
+  display: table-row-group;
+  vertical-align: middle;
+  border-color: inherit;
+}
+tbody tr td{
+  border-bottom: 1px solid #ccc;
+}
+
+/* Ajoute une ligne noir en haut et en bas */
+tbody tr:first-child td {
+  border-top: 1px solid black;
+}
+tbody tr:last-child td {
+  border-bottom: 1px solid black;
+}
+
+/* Alterner les backgrounds des lignes de tableau */
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2; 
+}
+tbody tr:nth-child(even) {
+  background-color: #ffffff; 
 }
